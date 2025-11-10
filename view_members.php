@@ -19,6 +19,7 @@ $result = mysqli_query($conn, $sql);
 <body class="bg-light">
 <div class="container mt-5">
   <h3 class="text-center text-success mb-4">Gym Members List</h3>
+  <a href="add_member.php" class="btn btn-primary mb-3">➕ Add Member</a>
   <table class="table table-bordered table-hover shadow-sm">
     <thead class="table-dark text-center">
       <tr>
@@ -26,6 +27,7 @@ $result = mysqli_query($conn, $sql);
         <th>Name</th>
         <th>Age</th>
         <th>Plan</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +37,10 @@ $result = mysqli_query($conn, $sql);
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['age']; ?></td>
         <td><?php echo $row['plan']; ?></td>
+        <td>
+          <a href="edit_member.php?id=<?php echo $row['member_id']; ?>" class="btn btn-warning btn-sm">✏️ Edit</a>
+          <a href="delete_member.php?id=<?php echo $row['member_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?');">🗑 Delete</a>
+        </td>
       </tr>
       <?php } ?>
     </tbody>
